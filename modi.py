@@ -127,26 +127,30 @@ def modi_method(cost, allocation):
 
 #for user input
 def input_matrix(rows, cols, matrix_name):
+    try:
 
-    st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
-    matrix = []
-    count = 0
-    for i in range(rows):
-        try:
-            row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)).split()))
-        except ValueError:
-            st.error("Enter numbers seperated by spaces")
-            row=[]
-            
-        count += 1
-        matrix.append(row)
-    return np.array(matrix)
+        st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
+        matrix = []
+        count = 0
+        for i in range(rows):
+            try:
+                row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)).split()))
+            except ValueError:
+                st.error("Enter numbers seperated by spaces")
+                row=[]
 
+            count += 1
+            matrix.append(row)
+        #`return np.array(matrix)
+    except ValueError:
+        st.write("Enter all the rows")
+    finally:
+        return np.array(matrix)
 
 #main function
 def main():
     st.markdown("""# Transportation Problem Solver
-**You should have an initial feasible solution (cost and initial allocation) on hand. This program will provide you with the optimal solution.**
+**You should have an initial feasible solution (cost and initial allocation) on hand. This program will provide you with the optimal solution. The program is limited to four sources and destinations**
    """)
     rows = int(st.number_input("Enter the number of rows in the cost matrix: ", step=1, min_value=3))
     cols = int(st.number_input("Enter the number of columns in the cost matrix: ", step=1, min_value=3))

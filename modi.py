@@ -127,18 +127,18 @@ def modi_method(cost, allocation):
 
 #for user input
 def input_matrix(rows, cols, matrix_name):
-    try:
-        st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
-        matrix = []
-        count = 0
-        widget_id = (id for id in range(1, 10))
-        for i in range(rows):
-            row = list(map(int, st.text_input(f"Row {i+1}: ", key=next(widget_id)). split()))
-            count+=1
-            matrix.append(row)
-        return np.array(matrix)
-    except:
-        st.write("Enter all the rows")
+    #try:
+    st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
+    matrix = []
+    count = 0
+    widget_id = (id for id in range(1, 10))
+    for i in range(rows):
+        row = list(map(int, st.text_input(f"Row {i+1}: ", key=next(widget_id)). split()))
+        count+=1
+        matrix.append(row)
+    return np.array(matrix)
+    #except:
+        #st.write("Enter all the rows")
 
 #main function
 def main():

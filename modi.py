@@ -149,14 +149,28 @@ def main():
     if (rows > 4) or (cols > 4): #to limit the program to 4 sources and destinations
         st.write("Oops! Sorry, this program is limited to 4 sources an destinations.")
     else:
+        cost_entered = False
+        allocation_entered = False
         #to enter the cost matrix
-        cost = input_matrix(rows, cols, "cost")
+        while not cost_entered:
+            cost = input_matrix(rows, cols, "cost")
+            if cost is not None:
+                cost_entered = True
+            else:
+                st.warning("Please enter the cost matrix")
         
         #to enter the allocation matrix
-        initial_allocation = input_matrix(rows, cols, "initial_allocation")
+        while not allocation_entered:
+            initial_allocation = input_matrix(rows, cols, "initial_allocation")
+            if initial_allocation is not None:
+                allocation_entered = True
+            else:
+                st.warning("Please enter the initial allocation matrix")
         
         #using the previously defined modi_method function to solve the problem
-        optimal_allocation, total_cost = modi_method(cost, initial_allocation)
+        if cost_entered and allocation_entered: 
+            optimal_allocation, total_cost = modi_method(cost, initial_allocation)
+
         if st.button("Generate Optimal Solution"):
             st.success("Here is your optimal transportation route with the associated total cost")
             st.write("Optimal Allocation : \n", optimal_allocation)

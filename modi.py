@@ -128,7 +128,6 @@ def modi_method(cost, allocation):
 #for user input
 def input_matrix(rows, cols, matrix_name):
     try:
-
         st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
         matrix = []
         count = 0
@@ -150,25 +149,25 @@ def main():
     cols = int(st.number_input("Enter the number of columns in the cost matrix: ", step=1, min_value=3))
 
     if (rows > 4) or (cols > 4): #to limit the program to 4 sources and destinations
-        st.write("Oops! Sorry, this program is limited to 4 sources an destinations.")
+        st.warning("Oops! Sorry, this program is limited to 4 sources an destinations.")
     else:
-        cost_entered = False
-        allocation_entered = False
+        #cost_entered = False
+        #allocation_entered = False
         #to enter the cost matrix
-        while not cost_entered:
-            cost = input_matrix(rows, cols, "cost")
-            if cost is not None:
-                cost_entered = True
-            else:
-                st.warning("Please enter the cost matrix")
+        #while not cost_entered:
+        cost = input_matrix(rows, cols, "cost")
+            #if cost is not None:
+                #cost_entered = True
+            #else:
+                #st.warning("Please enter the cost matrix")
         
         #to enter the allocation matrix
-        while not allocation_entered:
-            initial_allocation = input_matrix(rows, cols, "initial_allocation")
-            if initial_allocation is not None:
-                allocation_entered = True
-            else:
-                st.warning("Please enter the initial allocation matrix")
+        #while not allocation_entered:
+        initial_allocation = input_matrix(rows, cols, "initial_allocation")
+            #if initial_allocation is not None:
+                #allocation_entered = True
+            #else:
+                #st.warning("Please enter the initial allocation matrix")
         
         #using the previously defined modi_method function to solve the problem
         #if cost_entered and allocation_entered: 

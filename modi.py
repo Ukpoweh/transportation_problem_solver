@@ -132,7 +132,12 @@ def input_matrix(rows, cols, matrix_name):
     matrix = []
     count = 0
     for i in range(rows):
-        row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)).split()))
+        try:
+            row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)).split()))
+        except ValueError:
+            st.error("Enter numbers seperated by spaces")
+            row=[]
+            
         count += 1
         matrix.append(row)
     return np.array(matrix)
@@ -168,10 +173,11 @@ def main():
                 st.warning("Please enter the initial allocation matrix")
         
         #using the previously defined modi_method function to solve the problem
-        if cost_entered and allocation_entered: 
-            optimal_allocation, total_cost = modi_method(cost, initial_allocation)
+        #if cost_entered and allocation_entered: 
+            #optimal_allocation, total_cost = modi_method(cost, initial_allocation)
 
         if st.button("Generate Optimal Solution"):
+            optimal_allocation, total_cost = modi_method(cost, initial_allocation)
             st.success("Here is your optimal transportation route with the associated total cost")
             st.write("Optimal Allocation : \n", optimal_allocation)
             st.write("Total Cost: ", total_cost)

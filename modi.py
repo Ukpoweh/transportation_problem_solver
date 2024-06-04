@@ -135,11 +135,10 @@ def input_matrix(rows, cols, matrix_name):
         for i in range(rows):
             try:
                 row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)).split()))
+                count+=1
             except ValueError:
                 st.error("Enter numbers seperated by spaces")
                 row=[]
-            
-            count += 1
             matrix.append(row)
         return np.array(matrix)
     except ValueError:

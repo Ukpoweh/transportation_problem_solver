@@ -146,8 +146,6 @@ def input_matrix(rows, cols, matrix_name):
         return np.array(matrix)
     except ValueError:
         st.write("Enter all the rows")
-    finally:
-        return np.array(matrix)
 
 #main function
 def main():

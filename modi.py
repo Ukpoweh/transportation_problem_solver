@@ -131,7 +131,6 @@ def input_matrix(rows, cols, matrix_name):
     st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
     matrix = []
     count = 0
-    #widget_id = (id for id in range(1, 10))
     for i in range(rows):
         count += 1
         row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)). split()))
@@ -151,30 +150,17 @@ def main():
     if (rows > 4) or (cols > 4): #to limit the program to 4 sources and destinations
         st.warning("Oops! Sorry, this program is limited to 4 sources an destinations.")
     else:
-        #cost_entered = False
-        #allocation_entered = False
         #to enter the cost matrix
-        #while not cost_entered:
         cost = input_matrix(rows, cols, "cost")
-            #if cost is not None:
-                #cost_entered = True
-            #else:
-                #st.warning("Please enter the cost matrix")
-        
         #to enter the allocation matrix
-        #while not allocation_entered:
         initial_allocation = input_matrix(rows, cols, "initial_allocation")
-            #if initial_allocation is not None:
-                #allocation_entered = True
-            #else:
-                #st.warning("Please enter the initial allocation matrix")
-        
-        #using the previously defined modi_method function to solve the problem
-        #if cost_entered and allocation_entered: 
-            #optimal_allocation, total_cost = modi_method(cost, initial_allocation)
 
         if st.button("Generate Optimal Solution"):
-            optimal_allocation, total_cost = modi_method(cost, initial_allocation)
+            
+            try:
+                optimal_allocation, total_cost = modi_method(cost, initial_allocation)
+            except ValueError:
+                st.error("You did not enter appropriate values)
             st.success("Here is your optimal transportation route with the associated total cost")
             st.write("Optimal Allocation : \n", optimal_allocation)
             st.write("Total Cost: ", total_cost)

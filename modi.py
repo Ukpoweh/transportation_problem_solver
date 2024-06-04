@@ -143,8 +143,8 @@ def main():
     st.markdown("""# Transportation Problem Solver
 **You should have an initial feasible solution (cost and initial allocation) on hand. This program will provide you with the optimal solution.**
    """)
-    rows = int(st.number_input("Enter the number of rows in the cost matrix: ", step=1, min_value=1))
-    cols = int(st.number_input("Enter the number of columns in the cost matrix: ", step=1, min_value=1))
+    rows = int(st.number_input("Enter the number of rows in the cost matrix: ", step=1, min_value=3))
+    cols = int(st.number_input("Enter the number of columns in the cost matrix: ", step=1, min_value=3))
 
     if (rows > 4) or (cols > 4): #to limit the program to 4 sources and destinations
         st.write("Oops! Sorry, this program is limited to 4 sources an destinations.")

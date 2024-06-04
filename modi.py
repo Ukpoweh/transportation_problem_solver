@@ -137,7 +137,7 @@ def input_matrix(rows, cols, matrix_name):
             count+=1
             matrix.append(row)
         return np.array(matrix)
-    except ValueError:
+    except:
         st.write("Enter all the rows")
 
 #main function

@@ -138,9 +138,11 @@ def input_matrix(rows, cols, matrix_name):
             except ValueError:
                 st.error("Enter numbers seperated by spaces")
                 row=[]
-
-            count += 1
-            matrix.append(row)
+            try:
+                count += 1
+                matrix.append(row)
+            except ValueError:
+                st.write("Enter all the rows")
         #`return np.array(matrix)
     except ValueError:
         st.write("Enter all the rows")

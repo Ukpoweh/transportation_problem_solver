@@ -143,7 +143,7 @@ def input_matrix(rows, cols, matrix_name):
                 matrix.append(row)
             except ValueError:
                 st.write("Enter all the rows")
-        #`return np.array(matrix)
+        return np.array(matrix)
     except ValueError:
         st.write("Enter all the rows")
     finally:

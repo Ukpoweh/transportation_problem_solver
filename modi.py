@@ -169,9 +169,10 @@ def main():
                 optimal_allocation, total_cost = modi_method(cost, initial_allocation)
             except ValueError:
                 st.error("You did not enter appropriate values")
-            st.success("Here is your optimal transportation route with the associated total cost")
-            st.write("Optimal Allocation : \n", optimal_allocation)
-            st.write("Total Cost: ", total_cost)
+            else:
+                st.success("Here is your optimal transportation route with the associated total cost")
+                st.write("Optimal Allocation : \n", optimal_allocation)
+                st.write("Total Cost: ", total_cost)
 
 
 if __name__ == "__main__":

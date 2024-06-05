@@ -133,8 +133,10 @@ def input_matrix(rows, cols, matrix_name):
     count = 0
     for i in range(rows):
         count += 1
-        row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)). split()))
-        matrix.append(row)
+        #row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)). split()))
+        row = st.text_input(f"Row {i + 1}:", key=f"{matrix_name}_row_{count}")
+        row_values = list(map(int, row.split()))
+        matrix.append(row_values)
     return np.array(matrix)
     #except:
         #st.write("Enter all the rows")

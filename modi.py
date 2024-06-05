@@ -156,7 +156,7 @@ def main():
     cols = int(st.number_input("Enter the number of columns in the cost matrix: ", step=1, min_value=3))
 
     if (rows > 4) or (cols > 4): #to limit the program to 4 sources and destinations
-        st.warning("Oops! Sorry, this program is limited to 4 sources an destinations.")
+        st.warning("Oops! Sorry, this program is limited to 4 sources and destinations.")
     else:
         #to enter the cost matrix
         cost = input_matrix(rows, cols, "cost")
@@ -168,7 +168,7 @@ def main():
             try:
                 optimal_allocation, total_cost = modi_method(cost, initial_allocation)
             except ValueError:
-                st.error("You did not enter appropriate values)
+                st.error("You did not enter appropriate values")
             st.success("Here is your optimal transportation route with the associated total cost")
             st.write("Optimal Allocation : \n", optimal_allocation)
             st.write("Total Cost: ", total_cost)

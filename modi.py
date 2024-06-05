@@ -136,14 +136,14 @@ def input_matrix(rows, cols, matrix_name):
                 row_values = list(map(int, row.split()))
                 if len(row_values) != cols:
                     st.error(f"Row {i + 1} must have exactly {cols} values.")
-                    return None
+                    #return None
                 matrix.append(row_values)
             except ValueError:
                 st.error(f"Invalid input in Row {i + 1}. Please enter {cols} integer values separated by spaces.")
-                return None
+                #return None
         else:
             st.error(f"Row {i + 1} is required.")
-            return None
+            #return None
 
     return np.array(matrix)
 

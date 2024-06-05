@@ -127,19 +127,25 @@ def modi_method(cost, allocation):
 
 #for user input
 def input_matrix(rows, cols, matrix_name):
-    #try:
-    st.write(f"Enter the {matrix_name} matrix, row by row with each value seperated by space")
+    st.write(f"Enter the {matrix_name} matrix ({rows}x{cols}):")
     matrix = []
-    count = 0
     for i in range(rows):
-        count += 1
-        #row = list(map(int, st.text_input(f"Row {i+1}: ", key=matrix_name + str(count)). split()))
-        row = st.text_input(f"Row {i + 1}:", key=f"{matrix_name}_row_{count}")
-        row_values = list(map(int, row.split()))
-        matrix.append(row_values)
+        row = st.text_input(f"Row {i + 1}:", key=f"{matrix_name}_row_{i}")
+        if row:  # Check if row input is provided
+            try:
+                row_values = list(map(int, row.split()))
+                if len(row_values) != cols:
+                    st.error(f"Row {i + 1} must have exactly {cols} values.")
+                    return None
+                matrix.append(row_values)
+            except ValueError:
+                st.error(f"Invalid input in Row {i + 1}. Please enter {cols} integer values separated by spaces.")
+                return None
+        else:
+            st.error(f"Row {i + 1} is required.")
+            return None
+
     return np.array(matrix)
-    #except:
-        #st.write("Enter all the rows")
 
 #main function
 def main():
